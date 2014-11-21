@@ -273,7 +273,10 @@ var Regular = function(options){
   // handle computed
   if(template){
     this.group = this.$compile(this.template, {namespace: options.namespace});
-    combine.node(this);
+    this.$nodes = combine.node(this);
+    if (!Array.isArray(this.$nodes)) {
+      this.$nodes = [this.$nodes];
+    }
   }
 
 
