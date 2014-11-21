@@ -1207,9 +1207,11 @@ _.handleEvent = function(value, type ){
   if(evaluate){
     return function fire(obj){
       self.data.$event = obj;
+      self.data.$node = this;
       var res = evaluate(self);
       if(res === false && obj && obj.preventDefault) obj.preventDefault();
       delete self.data.$event;
+      delete self.data.$node;
       self.$update();
     }
   }else{
